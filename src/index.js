@@ -31,7 +31,6 @@ const Weather = () => {
         enableHighAccuracy: true,
       });
 
-      // WeatherAPI.com current weather endpoint
       const url = `http://api.weatherapi.com/v1/current.json?key=${weatherApiKey}&q=${location.coords.latitude},${location.coords.longitude}&aqi=no`;
       console.log("Fetching from", url);
 
@@ -42,7 +41,7 @@ const Weather = () => {
       if (!response.ok) {
         Alert.alert(
           "Error",
-          data.error?.message || "Something went wrong with the API request"
+          data.error?.message || "hov, der sku noget galt med din API anmodning"
         );
       } else {
         setForecast(data);
@@ -105,6 +104,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 36,
     fontWeight: "bold",
-    color: "#C84831",
+    color: "green",
   },
 });
