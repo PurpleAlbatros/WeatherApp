@@ -1,32 +1,25 @@
-name: Publish to Expo
+name: Expo Publish
 
 on:
   push:
-    branches: [main] # Change to your main branch name if different
-  workflow_dispatch: # Allows manual triggering
+    branches:
+      - main
 
 jobs:
   publish:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v3
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Setup Node
+        uses: actions/setup-node@v3
         with:
-          node-version: "18"
-          cache: "npm"
-
-      - name: Setup Expo
-        uses: expo/expo-github-action@v8
-        with:
-          expo-version: latest
-          token: ${{ secrets.EXPO_TOKEN }}
+          node-version: 18
 
       - name: Install dependencies
         run: npm install
 
       - name: Publish to Expo
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
         run: npx expo publish
