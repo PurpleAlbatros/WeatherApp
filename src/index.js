@@ -104,6 +104,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 36,
     fontWeight: "bold",
-    color: "green",
+    color: "orange",
   },
 });
